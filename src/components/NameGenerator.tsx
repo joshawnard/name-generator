@@ -5,6 +5,7 @@ import NameGeneratorContext, { NameGeneratorContextInterface } from "../NameGene
 import WordSelectForm from "./WordSelectForm";
 
 import { SelectedWordsInterface } from "../types/selectedWords";
+import GeneratorOutput from "./GeneratorOutput";
 
 const initialSelectedWords = {
   kinship: [],
@@ -24,7 +25,9 @@ const NameGenerator = () => {
     <NameGeneratorContext.Provider value={setNameGeneratorContext()}>
       <WordSelectForm />
 
-    {/*  GeneratorOutput*/}
+      <hr style={{ marginTop: "1vh", marginBottom: "1vh" }} />
+
+      <GeneratorOutput />
     </NameGeneratorContext.Provider>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { ChangeEvent, useContext } from 'react';
 import kinshipWords from "../root_words/kinship/kinship";
 import { wordType } from "../types/selectedWords";
 import NameGeneratorContext from "../NameGeneratorContext";
@@ -6,14 +6,30 @@ import NameGeneratorContext from "../NameGeneratorContext";
 const WordSelectForm = (): JSX.Element => {
   const { selectedWords, setSelectedWords } = useContext(NameGeneratorContext);
 
-  const handleCheck = (type: wordType, word: string) => {
-    setSelectedWords({
-      ...selectedWords,
-      [type]: [
-        ...selectedWords[type],
-        word,
-      ],
-    });
+  const handleCheck = (e: ChangeEvent<HTMLInputElement>, type: wordType, word: string) => {
+    const { currentTarget: { checked } } = e;
+
+    if (checked) {
+      setSelectedWords({
+        ...selectedWords,
+        [type]: [
+          ...selectedWords[type],
+          word,
+        ],
+      });
+    } else {
+      let words = selectedWords[type]
+      const index = words.indexOf(word, 0);
+
+      if (index > -1) {
+         words.splice(index, 1);
+      }
+
+      setSelectedWords({
+        ...selectedWords,
+        [type]: [...words],
+      });
+    }
   };
 
   return (
@@ -28,11 +44,11 @@ const WordSelectForm = (): JSX.Element => {
             const word = Object.keys(wordObj)[0];
 
             return (
-              <div>
+              <div key={word}>
                 <label>
                   <input
                     name={word}
-                    onChange={() => handleCheck("kinship", word)}
+                    onChange={(e) => handleCheck(e, "kinship", word)}
                     type="checkbox"
                   />
 

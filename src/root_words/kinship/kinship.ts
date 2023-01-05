@@ -5,4 +5,8 @@ const kinshipWords: RootWord[] = [
   mother,
 ];
 
+export const kinshipObj: { [key: string]: RootWord } = {
+  mother: mother,
+}
+
 export default kinshipWords;
