@@ -1,6 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import NameGenerator from "./components/NameGenerator";
+
 import './App.css';
+import logo from './logo.svg';
 
 function App() {
   return (
@@ -9,7 +12,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
 
-      
+      <NameGenerator />
     </div>
   );
 }

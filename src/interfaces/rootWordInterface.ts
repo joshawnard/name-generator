@@ -22,5 +22,7 @@ interface RootObj {
   welsh: rootArray,
 }
 
-export type RootWord = Partial<RootObj>;
+export interface RootWord {
+  [key: string]: Partial<RootObj>
+}
 
