@@ -2171,7 +2171,7 @@ const rootWordsObj: ThisInterface = {
       "ancient greek": "",
       "armenian": "",
       "baltic": "",
-      "celtic": "Old Irish cretim, W credaf \"I believe\"",
+      "celtic": "OIr cretim, W credaf \"I believe\"",
       "english": "creed, credo < Lat crēdō",
       "gothic": "",
       "hittite": "",
