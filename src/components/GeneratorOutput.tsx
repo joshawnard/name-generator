@@ -17,7 +17,7 @@ const GeneratorOutput = () => {
 
           if (list.length) {
             return (
-              <>
+              <div key={type}>
                 {
                   list.map((word) => {
                     const theOne = rootWordsObj[type].find((rootWordObj) => {
@@ -26,7 +26,7 @@ const GeneratorOutput = () => {
 
                     if (theOne) {
                       return (
-                        <>
+                        <div key={word}>
                           <h3>{word}</h3>
 
                           {
@@ -40,14 +40,14 @@ const GeneratorOutput = () => {
                               );
                             })
                           }
-                        </>
+                        </div>
                       );
                     }
 
                     return null;
                   })
                 }
-              </>
+              </div>
             );
           }
         })
