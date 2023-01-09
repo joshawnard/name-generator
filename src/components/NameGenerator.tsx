@@ -48,11 +48,23 @@ const NameGenerator = () => {
 
   return (
     <NameGeneratorContext.Provider value={setNameGeneratorContext()}>
-      <WordSelectForm />
+      <div style={{
+          // display: "flex",
+          // justifyContent: "center",
+          // borderRight: "1px solid gray",
+        }}
+      >
+        <div style={{
+          borderBottom: "2px solid gray",
+          maxHeight: "40vh",
+          overflow: "scroll",
+        }}
+        >
+          <WordSelectForm />
+        </div>
 
-      <hr style={{ marginTop: "1vh", marginBottom: "1vh" }} />
-
-      <GeneratorOutput />
+        <GeneratorOutput />
+      </div>
     </NameGeneratorContext.Provider>
   );
 };
