@@ -3,7 +3,7 @@ type rootArray = [
   string | null, // translation description
 ]
 
-interface RootObj {
+export interface RootObj {
   [key: string]: rootArray,
   armenian: rootArray,
   albanian: rootArray,

@@ -35,7 +35,6 @@ const GeneratorOutput = () => {
                                 Object.entries(langWord[1]).map((foo) => {
                                   return (
                                     <div key={foo[0]}>
-                                      {/*{foo[0]}*/}
                                       {
                                         foo[1] && foo[1].length && (
                                           <div>

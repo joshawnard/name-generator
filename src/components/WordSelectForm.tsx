@@ -1,10 +1,12 @@
-import React, { ChangeEvent, useContext } from 'react';
+import React, { ChangeEvent, useContext, useEffect } from 'react';
 import kinshipWords from "../root_words/kinship/kinship";
 import { wordType } from "../types/selectedWords";
 import NameGeneratorContext from "../NameGeneratorContext";
 
 const WordSelectForm = (): JSX.Element => {
   const { selectedWords, setSelectedWords } = useContext(NameGeneratorContext);
+
+
 
   const handleCheck = (e: ChangeEvent<HTMLInputElement>, type: wordType, word: string) => {
     const { currentTarget: { checked } } = e;
@@ -34,6 +36,12 @@ const WordSelectForm = (): JSX.Element => {
 
   return (
     <div>
+      <div>
+        Here!
+      </div>
+
+
+
       <div>
         <h3>
           Kinship

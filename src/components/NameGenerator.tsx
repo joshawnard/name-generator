@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import NameGeneratorContext, { NameGeneratorContextInterface } from "../NameGeneratorContext";
 
@@ -6,6 +6,7 @@ import WordSelectForm from "./WordSelectForm";
 
 import { SelectedWordsInterface } from "../types/selectedWords";
 import GeneratorOutput from "./GeneratorOutput";
+import rootWordsObj from "../root_words/rootWords";
 
 const initialSelectedWords = {
   kinship: [],
@@ -16,6 +17,7 @@ const NameGenerator = () => {
 
   const setNameGeneratorContext = (): NameGeneratorContextInterface => {
     return {
+      rootWordsObj,
       selectedWords,
       setSelectedWords,
     };
