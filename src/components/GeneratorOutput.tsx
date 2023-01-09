@@ -17,6 +17,26 @@ const GeneratorOutput = () => {
     );
   }, [rootWordsObj, selectedWords])
 
+  // TODO:
+  // Write name generator function that formats names and stores the roots:
+  // EX:
+  // const generatedNames = [
+  //   {
+  //     "generatedName": [
+  //       {
+  //         root: "generated",
+  //         language: "old irish",
+  //         englishMeaning: "to generate",
+  //       },
+  //       {
+  //         root: "Name",
+  //         language: "old church slavonic",
+  //         englishMeaning: "to name",
+  //       },
+  //     ],
+  //   }
+  // ];
+
   const renderFormattedWords = (): JSX.Element | null => {
     if (formattedWordStructures) {
       return (
@@ -36,14 +56,14 @@ const GeneratorOutput = () => {
                           </h4>
 
                           {
-                            list[1].map((wordArr) => {
-                              if (wordArr) {
-                                const [lang, translation, engMeaning] = wordArr;
+                            list[1].map((wordObj) => {
+                              if (wordObj) {
+                                const { language, translation, englishMeaning } = wordObj;
 
                                 return (
                                   <div key={translation}>
                                     <span>
-                                      {lang}:
+                                      {language}:
                                     </span>
                                     {' '}
                                     <span>
@@ -51,7 +71,7 @@ const GeneratorOutput = () => {
                                     </span>
                                     {' '}
                                     <span>
-                                      {engMeaning}
+                                      {englishMeaning}
                                     </span>
                                   </div>
                                 );
