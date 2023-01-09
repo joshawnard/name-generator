@@ -1,20 +1,25 @@
-import React, { ChangeEvent, useContext, useEffect } from 'react';
-import { wordType } from "../types/selectedWords";
+import React, { ChangeEvent, useContext } from 'react';
 import NameGeneratorContext from "../NameGeneratorContext";
+import rootWordsObj from "../root_words/rootWords";
 
 const WordSelectForm = (): JSX.Element => {
-  const { selectedWords, setSelectedWords } = useContext(NameGeneratorContext);
+  const { engWords, selectedWords, setSelectedWords } = useContext(NameGeneratorContext);
 
-
-
-  const handleCheck = (e: ChangeEvent<HTMLInputElement>, type: wordType, word: string) => {
+  const handleCheck = (e: ChangeEvent<HTMLInputElement>, type: string, word: string) => {
     const { currentTarget: { checked } } = e;
 
-    if (checked) {
+    if (checked && selectedWords[type]) {
       setSelectedWords({
         ...selectedWords,
         [type]: [
           ...selectedWords[type],
+          word,
+        ],
+      });
+    } else if (checked) {
+      setSelectedWords({
+        ...selectedWords,
+        [type]: [
           word,
         ],
       });
@@ -35,35 +40,44 @@ const WordSelectForm = (): JSX.Element => {
 
   return (
     <div>
-      <div>
-        Here!
+      <div style={{
+          display: "flex",
+          justifyContent: "start",
+          padding: "1rem",
+        }}
+      >
+        {
+          engWords.map((engWordCategory) => {
+            return Object.entries(engWordCategory).map((foo) => {
+              const [category, wordObjArr] = foo;
+
+              return (
+                <div key={category}>
+                  <h3>{category}</h3>
+
+                  {
+                    wordObjArr.map((word, index) => {
+                      return (
+                        <div key={`word-${index}`}>
+                          <label>
+                            <input
+                              name={word}
+                              onChange={(e) => handleCheck(e, category, word)}
+                              type="checkbox"
+                            />
+
+                            {word}
+                          </label>
+                        </div>
+                      );
+                    })
+                  }
+                </div>
+              );
+            })
+          })
+        }
       </div>
-
-      {/*<div>*/}
-      {/*  <h3>*/}
-      {/*    Kinship*/}
-      {/*  </h3>*/}
-
-      {/*  {*/}
-      {/*    kinshipWords.map((wordObj) => {*/}
-      {/*      const word = Object.keys(wordObj)[0];*/}
-
-      {/*      return (*/}
-      {/*        <div key={word}>*/}
-      {/*          <label>*/}
-      {/*            <input*/}
-      {/*              name={word}*/}
-      {/*              onChange={(e) => handleCheck(e, "kinship", word)}*/}
-      {/*              type="checkbox"*/}
-      {/*            />*/}
-
-      {/*            {word}*/}
-      {/*          </label>*/}
-      {/*        </div>*/}
-      {/*      );*/}
-      {/*    })*/}
-      {/*  }*/}
-      {/*</div>*/}
     </div>
   );
 };

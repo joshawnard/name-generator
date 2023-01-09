@@ -1647,28 +1647,6 @@ const rootWordsObj: ThisInterface = {
       "tocharian": ""
     }
   ],
-  "Derivatives": [
-    {
-      "": "Language",
-      "plural": "Acc",
-      "singular": "Nom"
-    },
-    {
-      "": "PIE",
-      "plural": "gʷōm",
-      "singular": "gʷōus"
-    },
-    {
-      "": "Sanskrit",
-      "plural": "gā́m",
-      "singular": "gáus"
-    },
-    {
-      "": "Avestan",
-      "plural": "gąm",
-      "singular": "gāuš"
-    }
-  ],
   "Directions": [
     {
       "albanian": "për, pej, pe \"forward\"",
@@ -2119,37 +2097,6 @@ const rootWordsObj: ThisInterface = {
       "sanskrit": "",
       "slavic": "",
       "tocharian": ""
-    }
-  ],
-  "Footnotes": [
-    {
-      "acc": "dyēum",
-      "dat": "diwéi",
-      "gen": "diw-és, -ós",
-      "instr pl": "?",
-      "language": "PIE",
-      "loc": "dyéwi and dyēu",
-      "nom": "d(i)yēus",
-      "voc": "dyĕu"
-    },
-    {
-      "acc": "Zdẽn",
-      "dat": "Di(w)í",
-      "gen": "Di(w)ós",
-      "language": "Greek",
-      "loc": "",
-      "nom": "Zdeús",
-      "voc": "Zdeũ"
-    },
-    {
-      "acc": "dyā́m",
-      "dat": "divḗ",
-      "gen": "divás, dyōs",
-      "instr pl": "dyú-bhis",
-      "language": "Sanskrit",
-      "loc": "dyáví, diví",
-      "nom": "d(i)yāús",
-      "voc": "?"
     }
   ],
   "General conditions and states": [
@@ -4651,32 +4598,6 @@ const rootWordsObj: ThisInterface = {
       "sanskrit": "a-, an-, na- \"un-\"",
       "slavic": "OCS ne- \"not\" < *ne-",
       "tocharian": "AB a(n)-, am-, e(n)-, em-, on- \"un-\""
-    }
-  ],
-  "Tabular notes": [
-    {
-      "vteproto-indo-european language": "Phonology"
-    },
-    {
-      "vteproto-indo-european language": "Morphology"
-    },
-    {
-      "vteproto-indo-european language": "Parts of speech"
-    },
-    {
-      "vteproto-indo-european language": "Main sources"
-    },
-    {
-      "vteproto-indo-european language": "Origins"
-    },
-    {
-      "vteproto-indo-european language": "Artificial compositions"
-    },
-    {
-      "vteproto-indo-european language": "Theories"
-    },
-    {
-      "vteproto-indo-european language": "See also"
     }
   ],
   "Time": [
