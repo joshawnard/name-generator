@@ -1,4 +1,10 @@
-const rootWordsObj = {
+interface ThisInterface {
+  [index: string]: {
+    [index: string]: string;
+  }[]
+}
+
+const rootWordsObj: ThisInterface = {
   "Self": [
     {
       "albanian": "është \"is\"",

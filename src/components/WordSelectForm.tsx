@@ -1,5 +1,4 @@
 import React, { ChangeEvent, useContext, useEffect } from 'react';
-import kinshipWords from "../root_words/kinship/kinship";
 import { wordType } from "../types/selectedWords";
 import NameGeneratorContext from "../NameGeneratorContext";
 
@@ -40,33 +39,31 @@ const WordSelectForm = (): JSX.Element => {
         Here!
       </div>
 
+      {/*<div>*/}
+      {/*  <h3>*/}
+      {/*    Kinship*/}
+      {/*  </h3>*/}
 
+      {/*  {*/}
+      {/*    kinshipWords.map((wordObj) => {*/}
+      {/*      const word = Object.keys(wordObj)[0];*/}
 
-      <div>
-        <h3>
-          Kinship
-        </h3>
+      {/*      return (*/}
+      {/*        <div key={word}>*/}
+      {/*          <label>*/}
+      {/*            <input*/}
+      {/*              name={word}*/}
+      {/*              onChange={(e) => handleCheck(e, "kinship", word)}*/}
+      {/*              type="checkbox"*/}
+      {/*            />*/}
 
-        {
-          kinshipWords.map((wordObj) => {
-            const word = Object.keys(wordObj)[0];
-
-            return (
-              <div key={word}>
-                <label>
-                  <input
-                    name={word}
-                    onChange={(e) => handleCheck(e, "kinship", word)}
-                    type="checkbox"
-                  />
-
-                  {word}
-                </label>
-              </div>
-            );
-          })
-        }
-      </div>
+      {/*            {word}*/}
+      {/*          </label>*/}
+      {/*        </div>*/}
+      {/*      );*/}
+      {/*    })*/}
+      {/*  }*/}
+      {/*</div>*/}
     </div>
   );
 };

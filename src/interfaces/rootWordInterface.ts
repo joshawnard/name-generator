@@ -1,25 +1,29 @@
-type rootArray = [
-  string | null, // word
-  string | null, // translation description
-]
+interface RootObj {
+  [key: string]: string;
+  armenian: string;
+  albanian: string;
+  ancient_greek: string;
+  baltic: string;
+  english: string;
+  old_english: string;
+  old_irish: string;
+  gaulish: string;
+  gothic: string;
+  hittite: string;
+  iranian: string;
+  latin: string;
+  sanskrit: string;
+  slavic: string;
+  tocharian: string;
+  welsh: string;
+}
 
-export interface RootObj {
-  [key: string]: rootArray,
-  armenian: rootArray,
-  albanian: rootArray,
-  ancient_greek: rootArray,
-  baltic: rootArray,
-  old_english: rootArray,
-  old_irish: rootArray,
-  gaulish: rootArray,
-  gothic: rootArray,
-  hittite: rootArray,
-  iranian: rootArray,
-  latin: rootArray,
-  sanskrit: rootArray,
-  slavic: rootArray,
-  tocharian: rootArray,
-  welsh: rootArray,
+export interface RootWordsObjInterface {
+  [key: string] : Partial<RootObj>[];
+}
+
+export interface EngWordsInterface {
+  [key: string]: string[];
 }
 
 export interface RootWord {
