@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import NameGeneratorContext from "../NameGeneratorContext";
 import formatSelectedWords from "../utils/formatSelectedWords";
+import { GeneratedName, ParsedRootInterface } from "../interfaces/rootWordInterface";
 
 // TODO:
 // Add randomizer that constructs multiple roots together
@@ -10,6 +11,7 @@ const GeneratorOutput = () => {
   const [formattedWordStructures, setFormattedWordStructures] = useState(
     formatSelectedWords(selectedWords, rootWordsObj),
   );
+  const [generatedNames, setGeneratedNames] = useState<GeneratedName[]>([]);
 
   useEffect(() => {
     setFormattedWordStructures(
@@ -17,25 +19,49 @@ const GeneratorOutput = () => {
     );
   }, [rootWordsObj, selectedWords])
 
-  // TODO:
-  // Write name generator function that formats names and stores the roots:
-  // EX:
-  // const generatedNames = [
-  //   {
-  //     "generatedName": [
-  //       {
-  //         root: "generated",
-  //         language: "old irish",
-  //         englishMeaning: "to generate",
-  //       },
-  //       {
-  //         root: "Name",
-  //         language: "old church slavonic",
-  //         englishMeaning: "to name",
-  //       },
-  //     ],
-  //   }
-  // ];
+  useEffect(() => {
+    setGeneratedNames(() => {
+      if (formattedWordStructures && formattedWordStructures[0]) {
+        let generated: { [key: string]: ParsedRootInterface[] }[] = [];
+        const structures = formattedWordStructures[0];
+
+        // TODO: determine loop structure to generate more than one name
+        let numOfRoots = Math.floor(Math.random() * (structures.length));
+        if (numOfRoots < 2) {
+          numOfRoots = 2;
+        }
+        let nameKey = "";
+        let rootsArr: ParsedRootInterface[] = [];
+
+        for (let i = 0; i < numOfRoots; i++) {
+          const randomStructureIndex = Math.floor(Math.random() * (structures.length - 1));
+          const randomStructure = structures[randomStructureIndex];
+
+          if (randomStructure) {
+            const translationList = Object.entries(randomStructure).map((entry) => {
+              return entry[1].filter((element) => {
+                return element !== undefined;
+              });
+            })[0]
+
+            const randomTranslationIndex = Math.floor(Math.random() * (translationList.length - 1));
+            const translationObj = translationList[randomTranslationIndex];
+
+            nameKey += translationObj?.translation || "";
+            rootsArr.push(translationObj as ParsedRootInterface);
+          }
+        }
+
+        generated.push({
+          [nameKey]: rootsArr,
+        });
+
+        return generated;
+      }
+
+      return [];
+    });
+  }, [formattedWordStructures])
 
   const renderFormattedWords = (): JSX.Element | null => {
     if (formattedWordStructures) {
@@ -93,54 +119,58 @@ const GeneratorOutput = () => {
     return null;
   };
 
+  const renderGenerated = (): JSX.Element | null => {
+    if (generatedNames.length) {
+      return (
+        <div>
+          {
+            generatedNames.map((generatedNameObj) => {
+              const name = Object.keys(generatedNameObj)[0];
+              const rootArr = Object.values(generatedNameObj)[0];
+
+              return (
+                <div
+                  className="name-card"
+                  key={name}
+                >
+                  <h2>
+                    {name}
+                  </h2>
+
+                  <hr style={{ margin: "10px" }} />
+
+                  {
+                    rootArr.map((root) => {
+                      return (
+                        <div key={root.translation}>
+                          <h3>
+                            {root.language}
+                          </h3>
+
+                          <p>
+                            {root.translation} - {root.englishMeaning}
+                          </p>
+                        </div>
+                      );
+                    })
+                  }
+                </div>
+              );
+            })
+          }
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
-    <div>
+    <div className="generated">
+      {renderGenerated()}
       {renderFormattedWords()}
     </div>
   );
 };
 
 export default GeneratorOutput;
-
-// const renderSelectedWords = () => {
-//   return Object.entries(selectedWords).map((selectedWord) => {
-//     const type = selectedWord[0];
-//     const list = selectedWord[1];
-//
-//     if (list.length) {
-//       return (
-//         <div key={type}>
-//           {
-//             list.map((word) => {
-//               const theOne = rootWordsObj[type].find((rootWordObj) => {
-//                 return rootWordObj.english?.includes(word);
-//               });
-//
-//               if (theOne) {
-//                 return (
-//                   <div key={word}>
-//                     <h3>{word}</h3>
-//
-//                     {
-//                       Object.entries(theOne).map((entry) => {
-//                         return (
-//                           <div key={entry[0]}>
-//                             <span><b>{entry[0]}</b></span>:
-//                             {' '}
-//                             <span>{entry[1]}</span>
-//                           </div>
-//                         );
-//                       })
-//                     }
-//                   </div>
-//                 );
-//               }
-//
-//               return null;
-//             })
-//           }
-//         </div>
-//       );
-//     }
-//   })
-// };

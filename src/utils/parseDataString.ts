@@ -1,8 +1,4 @@
-interface ParsedRootInterface {
-  language: string; // language
-  translation: string; // word
-  englishMeaning: string; // english meaning
-}
+import { ParsedRootInterface } from "../interfaces/rootWordInterface";
 
 const parseDataString = (
   dataString: string | undefined,

@@ -13,8 +13,9 @@ const parseEnglishString = (engString: string): string => {
   const splitString = engString.split(" ");
 
   if (splitString[0]) {
+    // console.log(splitString[0])
     if (splitString[0] === "OE") {
-      return splitString[1];
+      return splitString[2];
     }
 
     return splitString[0];

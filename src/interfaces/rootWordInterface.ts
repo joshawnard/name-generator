@@ -26,7 +26,13 @@ export interface EngWordsInterface {
   [key: string]: string[];
 }
 
-export interface RootWord {
-  [key: string]: Partial<RootObj>
+export interface ParsedRootInterface {
+  language: string; // language
+  translation: string; // word
+  englishMeaning: string; // english meaning
+}
+
+export interface GeneratedName {
+  [key: string]: ParsedRootInterface[];
 }
 
