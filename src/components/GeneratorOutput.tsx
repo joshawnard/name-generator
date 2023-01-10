@@ -26,7 +26,6 @@ const GeneratorOutput = () => {
         const structures = formattedWordStructures[0];
 
         const numNames = 50;
-
         Array.from(Array(numNames)).forEach((time) => {
           // TODO: determine loop structure to generate more than one name
           let numOfRoots = Math.floor(Math.random() * (structures.length));
@@ -37,7 +36,7 @@ const GeneratorOutput = () => {
           let rootsArr: ParsedRootInterface[] = [];
 
           for (let i = 0; i < numOfRoots; i++) {
-            const randomStructureIndex = Math.floor(Math.random() * (structures.length - 1));
+            const randomStructureIndex = Math.floor(Math.random() * (structures.length));
             const randomStructure = structures[randomStructureIndex];
 
             if (randomStructure) {
