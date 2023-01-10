@@ -25,36 +25,43 @@ const GeneratorOutput = () => {
         let generated: { [key: string]: ParsedRootInterface[] }[] = [];
         const structures = formattedWordStructures[0];
 
-        // TODO: determine loop structure to generate more than one name
-        let numOfRoots = Math.floor(Math.random() * (structures.length));
-        if (numOfRoots < 2) {
-          numOfRoots = 2;
-        }
-        let nameKey = "";
-        let rootsArr: ParsedRootInterface[] = [];
+        const numNames = 50;
 
-        for (let i = 0; i < numOfRoots; i++) {
-          const randomStructureIndex = Math.floor(Math.random() * (structures.length - 1));
-          const randomStructure = structures[randomStructureIndex];
-
-          if (randomStructure) {
-            const translationList = Object.entries(randomStructure).map((entry) => {
-              return entry[1].filter((element) => {
-                return element !== undefined;
-              });
-            })[0]
-
-            const randomTranslationIndex = Math.floor(Math.random() * (translationList.length - 1));
-            const translationObj = translationList[randomTranslationIndex];
-
-            nameKey += translationObj?.translation || "";
-            rootsArr.push(translationObj as ParsedRootInterface);
+        Array.from(Array(numNames)).forEach((time) => {
+          // TODO: determine loop structure to generate more than one name
+          let numOfRoots = Math.floor(Math.random() * (structures.length));
+          if (numOfRoots < 2) {
+            numOfRoots = 2;
           }
-        }
+          let nameKey = "";
+          let rootsArr: ParsedRootInterface[] = [];
 
-        generated.push({
-          [nameKey]: rootsArr,
-        });
+          for (let i = 0; i < numOfRoots; i++) {
+            const randomStructureIndex = Math.floor(Math.random() * (structures.length - 1));
+            const randomStructure = structures[randomStructureIndex];
+
+            if (randomStructure) {
+              const translationList = Object.entries(randomStructure).map((entry) => {
+                return entry[1].filter((element) => {
+                  return element !== undefined;
+                });
+              })[0]
+
+              const randomTranslationIndex = Math.floor(Math.random() * (translationList.length - 1));
+              const translationObj = translationList[randomTranslationIndex];
+
+              nameKey += translationObj?.translation || "";
+              rootsArr.push(translationObj as ParsedRootInterface);
+            }
+          }
+
+          const alreadyExists = !!generated.find((obj) => Object.keys(obj)[0] === nameKey);
+          if (!alreadyExists) {
+            generated.push({
+              [nameKey]: rootsArr,
+            });
+          }
+        })
 
         return generated;
       }
@@ -87,7 +94,7 @@ const GeneratorOutput = () => {
                                 const { language, translation, englishMeaning } = wordObj;
 
                                 return (
-                                  <div key={translation}>
+                                  <div key={`${translation}-${language}`}>
                                     <span>
                                       {language}:
                                     </span>
@@ -140,9 +147,11 @@ const GeneratorOutput = () => {
                   <hr style={{ margin: "10px" }} />
 
                   {
-                    rootArr.map((root) => {
+                    rootArr.map((root, index) => {
                       return (
-                        <div key={root.translation}>
+                        <div
+                          key={`${name}-${root.translation}-${index}`}
+                        >
                           <h3>
                             {root.language}
                           </h3>
@@ -168,7 +177,7 @@ const GeneratorOutput = () => {
   return (
     <div className="generated">
       {renderGenerated()}
-      {renderFormattedWords()}
+      {/*{renderFormattedWords()}*/}
     </div>
   );
 };
