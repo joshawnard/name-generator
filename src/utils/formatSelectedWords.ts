@@ -27,11 +27,15 @@ const formatSelectedWords = (
                 if (parsedWordAndLanguage) {
                   return parsedWordAndLanguage;
                 }
+
+                return undefined;
               }),
             };
           }
         })
       }
+
+      return undefined;
     });
   }
 

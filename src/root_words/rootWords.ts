@@ -2076,7 +2076,7 @@ const rootWordsObj: ThisInterface = {
       "gothic": "apel",
       "hittite": "",
       "iranian": "",
-      "latin": "(Osc Abella \"town name\")",
+      "latin": "Osc Abella \"town name\")",
       "pie": "*h₂ébōl \"apple\"[121][122]",
       "sanskrit": "",
       "slavic": "OCS ablŭ·ko \"apple\"",

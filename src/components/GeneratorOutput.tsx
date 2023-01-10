@@ -23,15 +23,18 @@ const GeneratorOutput = () => {
     setGeneratedNames(() => {
       if (formattedWordStructures && formattedWordStructures[0]) {
         let generated: { [key: string]: ParsedRootInterface[] }[] = [];
-        const structures = formattedWordStructures[0];
+        const structures = formattedWordStructures.flat();
 
-        const numNames = 50;
+        const numNames = 500;
         Array.from(Array(numNames)).forEach((time) => {
-          // TODO: determine loop structure to generate more than one name
           let numOfRoots = Math.floor(Math.random() * (structures.length));
           if (numOfRoots < 2) {
             numOfRoots = 2;
           }
+          if (numOfRoots > 3) {
+            numOfRoots = 3;
+          }
+
           let nameKey = "";
           let rootsArr: ParsedRootInterface[] = [];
 
@@ -49,7 +52,7 @@ const GeneratorOutput = () => {
               const randomTranslationIndex = Math.floor(Math.random() * (translationList.length - 1));
               const translationObj = translationList[randomTranslationIndex];
 
-              nameKey += translationObj?.translation || "";
+              nameKey += translationObj?.translation.replaceAll(/[$;,*-]/g, "") || "";
               rootsArr.push(translationObj as ParsedRootInterface);
             }
           }
@@ -67,7 +70,7 @@ const GeneratorOutput = () => {
 
       return [];
     });
-  }, [formattedWordStructures])
+  }, [formattedWordStructures, selectedWords])
 
   const renderFormattedWords = (): JSX.Element | null => {
     if (formattedWordStructures) {
@@ -151,13 +154,13 @@ const GeneratorOutput = () => {
                         <div
                           key={`${name}-${root.translation}-${index}`}
                         >
-                          <h3>
+                          <h3 style={{ marginBottom: "5px" }}>
                             {root.language}
                           </h3>
 
-                          <p>
-                            {root.translation} - {root.englishMeaning}
-                          </p>
+                          <small>
+                            <strong>{root.translation}</strong> - <em>{root.englishMeaning}</em>
+                          </small>
                         </div>
                       );
                     })

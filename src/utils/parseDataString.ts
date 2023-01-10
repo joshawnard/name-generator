@@ -1,4 +1,6 @@
-import { ParsedRootInterface } from "../interfaces/rootWordInterface";
+import {
+  ParsedRootInterface
+} from "../interfaces/rootWordInterface";
 
 const getWordInQuotes = (str: string) => {
   const match = str.match(/[^"]+(?=(" ")|"$)/g)
@@ -27,97 +29,198 @@ const parseDataString = (
     }
 
     let languageAndWord: ParsedRootInterface = {
-     language: language,
-     translation: splitString[0],
-     englishMeaning: splitString[2],
+      language: language,
+      translation: splitString[0],
+      englishMeaning: splitString[2],
     };
 
-    switch(language) {
-      case "baltic":
-        if (splitString[0] === "OPrus") {
+    switch (language) {
+      case "ancient greek":
+        if (["Att"].includes(splitString[0])) {
            languageAndWord = {
-             ...defaultLanguageAndWord,
-             language: "old prussian",
-             // translation: splitString[1],
-             // englishMeaning: splitString[2],
-           }
+            ...defaultLanguageAndWord,
+            language: "attic greek",
+          }
         }
 
-        if (splitString[0] === "Lith") {
+        if (["Doric"].includes(splitString[0])) {
            languageAndWord = {
-             ...defaultLanguageAndWord,
-             language: "lithuanian",
-             // translation: splitString[1],
-             // englishMeaning: splitString[2],
-           }
+            ...defaultLanguageAndWord,
+            language: "doric",
+          }
+        }
+
+        if (["Myc"].includes(splitString[0])) {
+           languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "mycenaean",
+          }
+        }
+
+        break;
+
+      case "baltic":
+        if (splitString[0] === "OPrus") {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "old prussian",
+          }
+        }
+
+        if (["Lith", "OLith"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "lithuanian",
+          }
+        }
+
+        if (["Latv"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "latvian",
+          }
         }
 
         break;
 
       case "celtic":
-       if (["OIr", "Old Irish"].includes(splitString[0])) {
-         languageAndWord = {
-           ...defaultLanguageAndWord,
-           language: "old irish",
-           // translation: splitString[1],
-           // englishMeaning: splitString[2],
-         }
-       }
+        if (["OIr", "Old Irish"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "old irish",
+          }
+        }
 
-       if (["Gaul", "Gaul.", "Gaulish"].includes(splitString[0])) {
-         languageAndWord = languageAndWord = {
-           ...defaultLanguageAndWord,
-           language: "gaulish",
-           // translation: splitString[1],
-           // englishMeaning: splitString[2],
-         }
-       }
+        if (["Gaul", "Gaul.", "Gaulish"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "gaulish",
+          }
+        }
 
-       break;
+        if (["W"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "welsh",
+          }
+        }
+
+        if (["MWel"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "middle welsh",
+          }
+        }
+
+        break;
+
+      case "english":
+        if (["OE"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "old english",
+          }
+        }
+
+        break;
+
+      case "gothic":
+        if (splitString[0] === "ON") {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "old norse",
+          }
+        }
+
+        if (["OHG"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "old high german",
+          }
+        }
+
+        break;
+
+      case "hittite":
+        if (splitString[0] === "Luwian") {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "luwian",
+          }
+        }
+
+        break;
 
       case "iranian":
-       if (splitString[0] === "Av") {
-         languageAndWord = languageAndWord = {
-           ...defaultLanguageAndWord,
-           language: "avestan",
-           // translation: splitString[1],
-           // englishMeaning: splitString[2],
-         }
-       }
-       break;
+        if (splitString[0] === "Av") {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "avestan",
+          }
+        }
+
+        if (splitString[0] === "Old") {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "old iranian",
+            translation: splitString[2],
+          }
+        }
+
+        if (splitString[0] === "Proto-Iranian") {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "proto-iranian",
+          }
+        }
+
+        break;
+
+      case "latin":
+        if (["Osc", "Oscan"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "oscan",
+          }
+        }
+
+        if (["Umbrian"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "umbrian",
+          }
+        }
+
+        break;
 
       case "slavic":
-       if (splitString[0] === "OCS") {
-         languageAndWord = languageAndWord = {
-           ...defaultLanguageAndWord,
-           language: "old church slavonic",
-           // translation: splitString[1],
-           // englishMeaning: splitString[2],
-         }
-       }
+        if (splitString[0] === "OCS") {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "old church slavonic",
+          }
+        }
 
-       break;
+        break;
 
       case "tocharian":
-       if (splitString[0] === "A") {
-         languageAndWord = languageAndWord = {
-           ...defaultLanguageAndWord,
-           language: "tocharian A",
-           // translation: splitString[1],
-           // englishMeaning: splitString[2],
-         }
-       }
+        if (splitString[0] === "A") {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "tocharian A",
+          }
+        }
 
-       break;
+        break;
 
       default:
-       languageAndWord = {
-         language: language,
-         translation: splitString[0],
-         englishMeaning: getWordInQuotes(dataString),
-       };
+        languageAndWord = {
+          language: language,
+          translation: splitString[0],
+          englishMeaning: getWordInQuotes(dataString),
+        };
 
-       break;
+        break;
     }
 
     return languageAndWord;
