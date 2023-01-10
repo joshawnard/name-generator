@@ -1,16 +1,7 @@
 import {
   ParsedRootInterface
 } from "../interfaces/rootWordInterface";
-
-const getWordInQuotes = (str: string) => {
-  const match = str.match(/[^"]+(?=(" ")|"$)/g)
-
-  if (match) {
-    return match[0];
-  }
-
-  return "";
-};
+import getWordsInQuotes from "./getWordsInQuotes";
 
 const parseDataString = (
   dataString: string | undefined,
@@ -25,7 +16,7 @@ const parseDataString = (
     const defaultLanguageAndWord = {
       language: language,
       translation: splitString[1],
-      englishMeaning: getWordInQuotes(dataString),
+      englishMeaning: getWordsInQuotes(dataString),
     }
 
     let languageAndWord: ParsedRootInterface = {
@@ -60,7 +51,7 @@ const parseDataString = (
         break;
 
       case "baltic":
-        if (splitString[0] === "OPrus") {
+        if (["OPrus", "OP"].includes(splitString[0])) {
           languageAndWord = {
             ...defaultLanguageAndWord,
             language: "old prussian",
@@ -74,7 +65,7 @@ const parseDataString = (
           }
         }
 
-        if (["Latv"].includes(splitString[0])) {
+        if (["Latv", "Latvian"].includes(splitString[0])) {
           languageAndWord = {
             ...defaultLanguageAndWord,
             language: "latvian",
@@ -84,7 +75,7 @@ const parseDataString = (
         break;
 
       case "celtic":
-        if (["OIr", "Old Irish"].includes(splitString[0])) {
+        if (["OIr", "OI", "Old Irish"].includes(splitString[0])) {
           languageAndWord = {
             ...defaultLanguageAndWord,
             language: "old irish",
@@ -109,6 +100,13 @@ const parseDataString = (
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "middle welsh",
+          }
+        }
+
+        if (["MBret"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "breton",
           }
         }
 
@@ -142,10 +140,17 @@ const parseDataString = (
         break;
 
       case "hittite":
-        if (splitString[0] === "Luwian") {
+        if (["Luwian", "HLuw"].includes(splitString[0])) {
           languageAndWord = {
             ...defaultLanguageAndWord,
             language: "luwian",
+          }
+        }
+
+        if (["Hitt", "Hitt."].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "hittite",
           }
         }
 
@@ -201,6 +206,13 @@ const parseDataString = (
           }
         }
 
+        if (["Russ", "Russ."].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "russian",
+          }
+        }
+
         break;
 
       case "tocharian":
@@ -217,7 +229,7 @@ const parseDataString = (
         languageAndWord = {
           language: language,
           translation: splitString[0],
-          englishMeaning: getWordInQuotes(dataString),
+          englishMeaning: getWordsInQuotes(dataString),
         };
 
         break;

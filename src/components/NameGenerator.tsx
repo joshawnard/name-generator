@@ -8,12 +8,12 @@ import { SelectedWordsInterface } from "../types/selectedWords";
 import GeneratorOutput from "./GeneratorOutput";
 import rootWordsObj from "../root_words/rootWords";
 import { EngWordsInterface } from "../interfaces/rootWordInterface";
+import getWordsInQuotes from "../utils/getWordsInQuotes";
 
 const parseEnglishString = (engString: string): string => {
   const splitString = engString.split(" ");
 
   if (splitString[0]) {
-    // console.log(splitString[0])
     if (splitString[0] === "OE") {
       return splitString[2];
     }
@@ -27,6 +27,12 @@ const parseEnglishString = (engString: string): string => {
 const engWordsArr = Object.keys(rootWordsObj).map((category) => {
   return {
     [category]: rootWordsObj[category].map((rootWordObj) => {
+      const wordsInQuotes = getWordsInQuotes(rootWordObj.english);
+
+      if (wordsInQuotes) {
+        return wordsInQuotes;
+      }
+
       return parseEnglishString(rootWordObj.english);
     })
   }

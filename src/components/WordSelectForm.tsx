@@ -42,8 +42,10 @@ const WordSelectForm = (): JSX.Element => {
     <div>
       <div style={{
           display: "flex",
-          justifyContent: "start",
+          // justifyContent: "start",
+          flexWrap: "wrap",
           padding: "1rem",
+          textAlign: "left"
         }}
       >
         {
@@ -52,24 +54,34 @@ const WordSelectForm = (): JSX.Element => {
               const [category, wordObjArr] = foo;
 
               return (
-                <div key={category}>
+                <div
+                  key={category}
+                  style={{
+                    display: "inline-block",
+                    margin: "0.5rem",
+                  }}
+                >
                   <h3>{category}</h3>
 
                   {
                     wordObjArr.map((word, index) => {
-                      return (
-                        <div key={`word-${index}`}>
-                          <label>
-                            <input
-                              name={word}
-                              onChange={(e) => handleCheck(e, category, word)}
-                              type="checkbox"
-                            />
+                      if (word) {
+                        return (
+                          <div key={`word-${index}`}>
+                            <label>
+                              <input
+                                name={word}
+                                onChange={(e) => handleCheck(e, category, word)}
+                                type="checkbox"
+                              />
 
-                            {word}
-                          </label>
-                        </div>
-                      );
+                              {word}
+                            </label>
+                          </div>
+                        );
+                      }
+
+                      return null;
                     })
                   }
                 </div>

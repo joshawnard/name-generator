@@ -25,7 +25,7 @@ const GeneratorOutput = () => {
         let generated: { [key: string]: ParsedRootInterface[] }[] = [];
         const structures = formattedWordStructures.flat();
 
-        const numNames = 500;
+        const numNames = 1000;
         Array.from(Array(numNames)).forEach((time) => {
           let numOfRoots = Math.floor(Math.random() * (structures.length));
           if (numOfRoots < 2) {
@@ -52,7 +52,7 @@ const GeneratorOutput = () => {
               const randomTranslationIndex = Math.floor(Math.random() * (translationList.length - 1));
               const translationObj = translationList[randomTranslationIndex];
 
-              nameKey += translationObj?.translation.replaceAll(/[$;,*-]/g, "") || "";
+              nameKey += translationObj?.translation.replaceAll(/[$;,(?*-]/g, "") || "";
               rootsArr.push(translationObj as ParsedRootInterface);
             }
           }
@@ -75,7 +75,7 @@ const GeneratorOutput = () => {
   const renderFormattedWords = (): JSX.Element | null => {
     if (formattedWordStructures) {
       return (
-        <div>
+        <div style={{ display: "flex", justifyContent: "flex-start", textAlign: "left", flexWrap: "wrap" }}>
           {
             formattedWordStructures.map((formattedWord) => {
               if (formattedWord) {
@@ -85,7 +85,12 @@ const GeneratorOutput = () => {
                       const englishWord = list[0];
 
                       return (
-                        <div key={englishWord}>
+                        <div
+                          key={englishWord}
+                          style={{
+                            margin: "0.5rem",
+                          }}
+                        >
                           <h4>
                             {englishWord}
                           </h4>
@@ -97,17 +102,17 @@ const GeneratorOutput = () => {
 
                                 return (
                                   <div key={`${translation}-${language}`}>
-                                    <span>
-                                      {language}:
-                                    </span>
+                                    <strong>
+                                      {translation}:
+                                    </strong>
                                     {' '}
                                     <span>
-                                      {translation}
+                                      {language}
                                     </span>
-                                    {' '}
-                                    <span>
-                                      {englishMeaning}
-                                    </span>
+                                    {' - '}
+                                    <em>
+                                      {englishMeaning || englishWord}
+                                    </em>
                                   </div>
                                 );
                               }
@@ -132,6 +137,10 @@ const GeneratorOutput = () => {
     if (generatedNames.length) {
       return (
         <div>
+          <h2>
+            Names generated: {generatedNames.length}
+          </h2>
+
           {
             generatedNames.map((generatedNameObj) => {
               const name = Object.keys(generatedNameObj)[0];
@@ -142,9 +151,9 @@ const GeneratorOutput = () => {
                   className="name-card"
                   key={name}
                 >
-                  <h2>
+                  <h3>
                     {name}
-                  </h2>
+                  </h3>
 
                   <hr style={{ margin: "10px" }} />
 
@@ -154,9 +163,9 @@ const GeneratorOutput = () => {
                         <div
                           key={`${name}-${root.translation}-${index}`}
                         >
-                          <h3 style={{ marginBottom: "5px" }}>
+                          <h4 style={{ marginBottom: "5px" }}>
                             {root.language}
-                          </h3>
+                          </h4>
 
                           <small>
                             <strong>{root.translation}</strong> - <em>{root.englishMeaning}</em>
@@ -178,8 +187,11 @@ const GeneratorOutput = () => {
 
   return (
     <div className="generated">
+      {renderFormattedWords()}
+
+      <hr style={{ margin: "1rem 0" }} />
+
       {renderGenerated()}
-      {/*{renderFormattedWords()}*/}
     </div>
   );
 };
