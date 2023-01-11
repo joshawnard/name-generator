@@ -41,7 +41,7 @@ const engWordsArr = Object.keys(rootWordsObj).map((category) => {
 });
 
 // TODO: features
-// Parse , left off at Hedgehog
+// Parse , left off at Bodily functions and states
 // min roots for construction
 // max roots for construction
 

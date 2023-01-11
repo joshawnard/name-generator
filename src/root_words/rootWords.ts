@@ -738,7 +738,7 @@ const rootWordsObj: ThisInterface = {
       "celtic": "",
       "english": "long (< OE long, lang);",
       "gothic": "langs \"long\"",
-      "hittite": "GÍD.DA-aš \"long\"",
+      "hittite": "gídd-aš \"long\"",
       "iranian": "Av darəga \"long\"",
       "latin": "longus \"long\"",
       "pie": "*dlongʰos, *dl̥h₁gʰós \"long\";[315]",
@@ -791,7 +791,7 @@ const rootWordsObj: ThisInterface = {
       "latin": "alius \"other\"",
       "pie": "*alyos, *anyos \"other\"; *anteros \"second\"",
       "sanskrit": "anyá-, ántara- \"other\"; aryas, Aryan, \"else\"",
-      "slavic": "Old Sorbian wutory \"other\" < PSlav *ǫtorŭ",
+      "slavic": "OldSorbian wutory \"other\" < PSlav *ǫtorŭ",
       "tocharian": "A ālya-kə, B alye-kə \"another\""
     },
     {

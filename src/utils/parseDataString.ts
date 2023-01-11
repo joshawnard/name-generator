@@ -94,6 +94,13 @@ const parseDataString = (
           }
         }
 
+        if (["MIr"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "middle irish",
+          }
+        }
+
         if (["Gaul", "Gaul.", "Gaulish"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
@@ -194,6 +201,13 @@ const parseDataString = (
           }
         }
 
+        if (["Lydian"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "lydian",
+          }
+        }
+
         break;
 
       case "iranian":
@@ -240,6 +254,13 @@ const parseDataString = (
           }
         }
 
+        if (["Persian"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "farsi",
+          }
+        }
+
         if (["OPers"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
@@ -281,6 +302,13 @@ const parseDataString = (
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "old church slavonic",
+          }
+        }
+
+        if (["OldSorbian"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "old sorbian",
           }
         }
 
