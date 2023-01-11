@@ -7,7 +7,11 @@ import renderGenerated from "../utils/renderGeneratedNames";
 import generateNames from "../utils/generateNames";
 
 const GeneratorOutput = () => {
-  const { rootWordsObj, selectedWords } = useContext(NameGeneratorContext);
+  const {
+    rootWordsObj,
+    selectedWords,
+    settings: { showFormattedWords },
+  } = useContext(NameGeneratorContext);
   const [formattedWordStructures, setFormattedWordStructures] = useState(
     formatSelectedWords(selectedWords, rootWordsObj),
   );
@@ -23,14 +27,31 @@ const GeneratorOutput = () => {
     setGeneratedNames(generateNames(formattedWordStructures));
   }, [formattedWordStructures, selectedWords])
 
+  const formattedWordsStyle = {
+    display: showFormattedWords ? "flex" : "none",
+    height: showFormattedWords ? "20vh" : 0,
+  };
+
+  const generatedNamesStyle = {
+    height: showFormattedWords ? "65vh" : "90vh",
+  };
+
   return (
-    <div className="generated">
-      {renderFormattedWords(formattedWordStructures)}
+    <>
+      <div
+        className="formatted-word-wrapper"
+        style={formattedWordsStyle}
+      >
+        {renderFormattedWords(formattedWordStructures)}
+      </div>
 
-      <hr style={{ margin: "1rem 0" }} />
-
-      {renderGenerated(generatedNames)}
-    </div>
+      <div
+        className="generated-names-wrapper"
+        style={generatedNamesStyle}
+      >
+        {renderGenerated(generatedNames)}
+      </div>
+    </>
   );
 };
 

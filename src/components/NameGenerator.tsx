@@ -9,6 +9,8 @@ import GeneratorOutput from "./GeneratorOutput";
 import rootWordsObj from "../root_words/rootWords";
 import { EngWordsInterface } from "../interfaces/rootWordInterface";
 import getWordsInQuotes from "../utils/getWordsInQuotes";
+import { SettingsInterface } from "../interfaces/settingsInterfaces";
+import Settings from "./Settings";
 
 const parseEnglishString = (engString: string): string => {
   const splitString = engString.split(" ");
@@ -38,11 +40,18 @@ const engWordsArr = Object.keys(rootWordsObj).map((category) => {
   }
 });
 
+// TODO: features
+// min roots for construction
+// max roots for construction
+
 const NameGenerator = () => {
   const [selectedWords, setSelectedWords] = useState<SelectedWordsInterface>({});
   const [engWords, setEngWords] = useState<EngWordsInterface[]>(
     engWordsArr,
   );
+  const [settings, setSettings] = useState<SettingsInterface>({
+    showFormattedWords: true,
+  })
 
   const setNameGeneratorContext = (): NameGeneratorContextInterface => {
     return {
@@ -50,27 +59,25 @@ const NameGenerator = () => {
       rootWordsObj,
       selectedWords,
       setSelectedWords,
+      settings,
+      setSettings,
     };
   };
 
   return (
     <NameGeneratorContext.Provider value={setNameGeneratorContext()}>
-      <div style={{
-          // display: "flex",
-          // justifyContent: "center",
-          // borderRight: "1px solid gray",
-        }}
-      >
-        <div style={{
-          borderBottom: "2px solid gray",
-          maxHeight: "40vh",
-          overflow: "scroll",
-        }}
-        >
+      <div className="settings">
+        <Settings />
+      </div>
+
+      <div className="page-wrapper">
+        <div className="word-select">
           <WordSelectForm />
         </div>
 
-        <GeneratorOutput />
+        <div className="generated">
+          <GeneratorOutput />
+        </div>
       </div>
     </NameGeneratorContext.Provider>
   );

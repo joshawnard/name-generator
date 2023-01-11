@@ -6,7 +6,7 @@ const renderFormattedWords = (
 ): JSX.Element | null => {
   if (formattedWordStructures) {
     return (
-      <div style={{ display: "flex", justifyContent: "flex-start", textAlign: "left", flexWrap: "wrap" }}>
+      <>
         {
           formattedWordStructures.map((formattedWord) => {
             if (formattedWord) {
@@ -15,12 +15,11 @@ const renderFormattedWords = (
                   return Object.entries(word).map((list) => {
                     const englishWord = list[0];
 
+                    // TODO: table format?
                     return (
                       <div
+                        className="formatted-word"
                         key={englishWord}
-                        style={{
-                          margin: "0.5rem",
-                        }}
                       >
                         <h4>
                           {englishWord}
@@ -57,7 +56,7 @@ const renderFormattedWords = (
             }
           })
         }
-      </div>
+      </>
     );
   }
 

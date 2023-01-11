@@ -1,5 +1,5 @@
 const getWordsInQuotes = (str: string) => {
-  const match = str.match(/[^"]+(?=(" ")|"$)/g)
+  const match = str.match(/"(?:[^"\\]|\\.)*"/)
 
   if (match) {
     return match[0];

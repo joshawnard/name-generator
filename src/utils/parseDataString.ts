@@ -22,7 +22,7 @@ const parseDataString = (
     let languageAndWord: ParsedRootInterface = {
       language: language,
       translation: splitString[0],
-      englishMeaning: splitString[2],
+      englishMeaning: getWordsInQuotes(dataString),
     };
 
     switch (language) {

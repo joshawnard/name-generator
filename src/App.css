@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .App-logo {
@@ -15,13 +15,18 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 10vh;
+  height: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-header h1 {
+  font-size: 1em;
+  margin: 0;
 }
 
 .App-link {
@@ -37,9 +42,48 @@
   }
 }
 
+.settings {
+  align-items: center;
+  border: 1px solid gray;
+  display: flex;
+  height: 5vh;
+  padding: 0 0.5rem;
+}
+
+.page-wrapper {
+  display: flex;
+}
+
+.word-select {
+  max-height: 90vh;
+  min-width: 205px;
+  overflow: scroll;
+  padding: 0 0.5rem;
+}
+
 .generated {
   background: #f3f3f3;
-  /*height: 50vh;*/
+  max-height: 90vh;
+  overflow: scroll;
+  padding: 0 0.5rem;
+  width: fit-content;
+}
+
+.formatted-word-wrapper {
+  border-bottom: 2px solid gray;
+  /*box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);*/
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: scroll;
+}
+
+.formatted-word {
+  margin: 0.5rem;
+  min-width: fit-content;
+}
+
+.generated-names-wrapper {
+  overflow: scroll;
 }
 
 .name-card {

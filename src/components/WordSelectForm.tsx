@@ -40,27 +40,14 @@ const WordSelectForm = (): JSX.Element => {
 
   return (
     <div>
-      <div style={{
-          display: "flex",
-          // justifyContent: "start",
-          flexWrap: "wrap",
-          padding: "1rem",
-          textAlign: "left"
-        }}
-      >
+      <div>
         {
           engWords.map((engWordCategory) => {
             return Object.entries(engWordCategory).map((foo) => {
               const [category, wordObjArr] = foo;
 
               return (
-                <div
-                  key={category}
-                  style={{
-                    display: "inline-block",
-                    margin: "0.5rem",
-                  }}
-                >
+                <div key={category}>
                   <h3>{category}</h3>
 
                   {

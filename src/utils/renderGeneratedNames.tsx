@@ -6,7 +6,7 @@ const renderGenerated = (
 ): JSX.Element | null => {
   if (generatedNames.length) {
     return (
-      <div>
+      <>
         <h2>
           Names generated: {generatedNames.length}
         </h2>
@@ -48,7 +48,7 @@ const renderGenerated = (
             );
           })
         }
-      </div>
+      </>
     );
   }
 
