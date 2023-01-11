@@ -29,7 +29,7 @@ const GeneratorOutput = () => {
 
   const formattedWordsStyle = {
     display: showFormattedWords ? "flex" : "none",
-    height: showFormattedWords ? "20vh" : 0,
+    height: showFormattedWords ? "95vh" : 0,
   };
 
   const generatedNamesStyle = {

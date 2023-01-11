@@ -962,7 +962,7 @@ const rootWordsObj: ThisInterface = {
       "armenian": "",
       "baltic": "",
       "celtic": "",
-      "english": "",
+      "english": "dream",
       "gothic": "",
       "hittite": "",
       "iranian": "",

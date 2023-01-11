@@ -51,6 +51,16 @@ const parseDataString = (
 
         break;
 
+      case "albanian":
+        if (["Gheg"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "albanian (gheg)",
+          }
+        }
+
+        break;
+
       case "armenian":
         if (["OArm"].includes(splitString[0])) {
           languageAndWord = {

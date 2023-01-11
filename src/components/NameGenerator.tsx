@@ -8,23 +8,9 @@ import { SelectedWordsInterface } from "../types/selectedWords";
 import GeneratorOutput from "./GeneratorOutput";
 import rootWordsObj from "../root_words/rootWords";
 import { EngWordsInterface } from "../interfaces/rootWordInterface";
-import getWordsInQuotes from "../utils/getWordsInQuotes";
 import { SettingsInterface } from "../interfaces/settingsInterfaces";
 import Settings from "./Settings";
-
-const parseEnglishString = (engString: string): string => {
-  const splitString = engString.split(" ");
-
-  if (splitString[0]) {
-    if (["OE", "Scot"].includes(splitString[0])) {
-      return splitString[2];
-    }
-
-    return splitString[0];
-  }
-
-  return engString;
-};
+import parseEnglishString from "../utils/parseEnglishString";
 
 const engWordsArr = Object.keys(rootWordsObj).map((category) => {
   return {

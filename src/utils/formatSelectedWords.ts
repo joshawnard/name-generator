@@ -1,6 +1,7 @@
 import { SelectedWordsInterface } from "../types/selectedWords";
 import { FormattedWordStructures, RootWordsObjInterface } from "../interfaces/rootWordInterface";
 import parseDataString from "./parseDataString";
+import parseEnglishString from "./parseEnglishString";
 
 const formatSelectedWords = (
   selectedWords: SelectedWordsInterface,
@@ -16,7 +17,11 @@ const formatSelectedWords = (
       if (list.length) {
         return list.map((word) => {
           const theOne = rootWordsObj[type].find((rootWordObj) => {
-            return rootWordObj.english?.includes(word);
+            if (rootWordObj.english) {
+              return parseEnglishString(rootWordObj.english) === word;
+            }
+
+            return false;
           });
 
           if (theOne) {
