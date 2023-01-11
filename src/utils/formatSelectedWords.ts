@@ -1,11 +1,11 @@
 import { SelectedWordsInterface } from "../types/selectedWords";
-import { RootWordsObjInterface } from "../interfaces/rootWordInterface";
+import { FormattedWordStructures, RootWordsObjInterface } from "../interfaces/rootWordInterface";
 import parseDataString from "./parseDataString";
 
 const formatSelectedWords = (
   selectedWords: SelectedWordsInterface,
   rootWordsObj: RootWordsObjInterface,
-) => {
+): FormattedWordStructures => {
   const selectedEntries = Object.entries(selectedWords);
 
   if (selectedEntries.length) {
@@ -38,10 +38,14 @@ const formatSelectedWords = (
       }
 
       return undefined;
+    })
+    .filter((value) => {
+      // filters out undefined; breaks render name generator
+      return !!value;
     });
   }
 
-  return null;
+  return [];
 };
 
 export default formatSelectedWords;
