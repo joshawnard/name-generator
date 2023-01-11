@@ -137,6 +137,13 @@ const parseDataString = (
           }
         }
 
+        if (["Ger"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "german",
+          }
+        }
+
         break;
 
       case "hittite":

@@ -38,7 +38,16 @@ const renderGenerated = (
                         </h4>
 
                         <small>
-                          <strong>{root.translation}</strong> - <em>{root.englishMeaning}</em>
+                          <strong>{root.translation}</strong>
+
+                          {
+                            root.language !== "english" && (
+                              <>
+                                {' - '}
+                                <em>{root.englishMeaning}</em>
+                              </>
+                            )
+                          }
                         </small>
                       </div>
                     );
