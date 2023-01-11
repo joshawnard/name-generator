@@ -35,6 +35,13 @@ const parseDataString = (
           }
         }
 
+        if (["Pamphylian"].includes(splitString[0])) {
+           languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "pamphylian",
+          }
+        }
+
         if (["Doric"].includes(splitString[0])) {
            languageAndWord = {
             ...defaultLanguageAndWord,
@@ -49,6 +56,13 @@ const parseDataString = (
           }
         }
 
+        if (["Homeric"].includes(splitString[0])) {
+           languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "homeric greek",
+          }
+        }
+
         break;
 
       case "albanian":
@@ -59,10 +73,17 @@ const parseDataString = (
           }
         }
 
+        if (["OldTosk"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "albanian (old tosk)",
+          }
+        }
+
         break;
 
       case "armenian":
-        if (["OArm"].includes(splitString[0])) {
+        if (["OArm", "OldArm"].includes(splitString[0])) {
           languageAndWord = {
             ...defaultLanguageAndWord,
             language: "classical armenian",
@@ -97,6 +118,20 @@ const parseDataString = (
         break;
 
       case "celtic":
+        if (["Irsh"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "irish",
+          }
+        }
+
+        if (["Celtib"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "celtiberian",
+          }
+        }
+
         if (["OIr", "OI", "Old Irish"].includes(splitString[0])) {
           languageAndWord = {
             ...defaultLanguageAndWord,
@@ -111,7 +146,7 @@ const parseDataString = (
           }
         }
 
-        if (["Gaul", "Gaul.", "Gaulish"].includes(splitString[0])) {
+        if (["Gaul", "Gaul.", "Gaulish", "Gau"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "gaulish",
@@ -132,7 +167,7 @@ const parseDataString = (
           }
         }
 
-        if (["MBret"].includes(splitString[0])) {
+        if (["MBret", "Bret"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "breton",
@@ -173,7 +208,7 @@ const parseDataString = (
           }
         }
 
-        if (["Ger"].includes(splitString[0])) {
+        if (["Ger", "German"].includes(splitString[0])) {
           languageAndWord = {
             ...defaultLanguageAndWord,
             language: "german",
@@ -197,7 +232,7 @@ const parseDataString = (
         break;
 
       case "hittite":
-        if (["Luwian", "HLuw", "Luw", "HierLuv", "Luvian"].includes(splitString[0])) {
+        if (["Luwian", "HLuw", "Luw", "HierLuv", "Luvian", "CLuw"].includes(splitString[0])) {
           languageAndWord = {
             ...defaultLanguageAndWord,
             language: "luwian",
@@ -211,17 +246,24 @@ const parseDataString = (
           }
         }
 
-        if (["Lydian"].includes(splitString[0])) {
+        if (["Lydian", "Lyd"].includes(splitString[0])) {
           languageAndWord = {
             ...defaultLanguageAndWord,
             language: "lydian",
           }
         }
 
+        if ([ "Lyc"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "lycian",
+          }
+        }
+
         break;
 
       case "iranian":
-        if (splitString[0] === "Av") {
+        if (["YAv", "Av", "Avestan"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "avestan",
@@ -232,6 +274,20 @@ const parseDataString = (
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "Wakhi",
+          }
+        }
+
+        if (["Sogdian"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "sogdian",
+          }
+        }
+
+        if (["Kurdish"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "kurdish",
           }
         }
 
@@ -257,17 +313,17 @@ const parseDataString = (
           }
         }
 
-        if (["NPers"].includes(splitString[0])) {
+        if (["NPers", "Npers"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "dari, new persian",
           }
         }
 
-        if (["Persian"].includes(splitString[0])) {
+        if (["Persian", "Per"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
-            language: "farsi",
+            language: "persian",
           }
         }
 
@@ -275,6 +331,13 @@ const parseDataString = (
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "old persian",
+          }
+        }
+
+        if (["Pash", "Past"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "pashto",
           }
         }
 
@@ -288,10 +351,28 @@ const parseDataString = (
           }
         }
 
+        if (["Proto-Italic"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "proto-italic",
+          }
+        }
+
         if (["Umbrian"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "umbrian",
+          }
+        }
+
+        break;
+
+      case "pie":
+        if (language === "pie") {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            translation: splitString[0],
+            language: "proto indo european",
           }
         }
 
@@ -322,7 +403,7 @@ const parseDataString = (
           }
         }
 
-        if (["Russ", "Russ."].includes(splitString[0])) {
+        if (["Russ", "Russ.", "Russian", "Rus"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "russian",
@@ -336,6 +417,13 @@ const parseDataString = (
           }
         }
 
+        if (["Czech"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "czech",
+          }
+        }
+
         if (["Bulg"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
@@ -343,10 +431,31 @@ const parseDataString = (
           }
         }
 
-        if (["Ukr"].includes(splitString[0])) {
+        if (["MBulg"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "middle bulgarian",
+          }
+        }
+
+        if (["Ukr", "Ukrainian"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "ukranian",
+          }
+        }
+
+        if (["Pol"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "polish",
+          }
+        }
+
+        if (["Belar"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "belarusian",
           }
         }
 
@@ -367,7 +476,7 @@ const parseDataString = (
           }
         }
 
-        if (splitString[0] === "AB") {
+        if (["AB", "A/B"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "tocharian A/B",
@@ -389,6 +498,7 @@ const parseDataString = (
     return {
       language: removeExtraChars(languageAndWord.language),
       translation: removeExtraChars(languageAndWord.translation),
+      // translation: removeExtraChars(languageAndWord.translation).toLowerCase(),
       englishMeaning: languageAndWord.englishMeaning,
     };
   }
