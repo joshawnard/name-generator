@@ -36,3 +36,5 @@ export interface GeneratedName {
   [key: string]: ParsedRootInterface[];
 }
 
+export type FormattedWordStructures = (({[p: string]: (ParsedRootInterface | undefined)[]} | undefined)[] | undefined)[] | null;
+
