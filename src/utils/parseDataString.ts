@@ -80,6 +80,13 @@ const parseDataString = (
           }
         }
 
+        if (["Tosk"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "albanian (tosk)",
+          }
+        }
+
         break;
 
       case "armenian":
@@ -153,7 +160,7 @@ const parseDataString = (
           }
         }
 
-        if (["W"].includes(splitString[0])) {
+        if (["W", "NWel"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "welsh",
@@ -167,7 +174,7 @@ const parseDataString = (
           }
         }
 
-        if (["MBret", "Bret"].includes(splitString[0])) {
+        if (["MBret", "Bret", "Bre"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "breton",

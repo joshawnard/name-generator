@@ -4579,7 +4579,7 @@ const rootWordsObj: ThisInterface = {
       "english": "now, Scot noo  (< OE nū)",
       "gothic": "nu \"now\"",
       "hittite": "nu \"now, and\"",
-      "iranian": "Nūn",
+      "iranian": "Nūn \"now\"",
       "latin": "num, nunc (num + -ce) \"now\";  nūper \"lately, recently\"",
       "pie": "*nu- \"now\"  [444] [445] [446] [447]",
       "sanskrit": "nú \"now, so now, now then; at once\"; nū́ \"now\"; nūtane \"current, present\"",
