@@ -16,7 +16,7 @@ const parseEnglishString = (engString: string): string => {
   const splitString = engString.split(" ");
 
   if (splitString[0]) {
-    if (splitString[0] === "OE") {
+    if (["OE", "Scot"].includes(splitString[0])) {
       return splitString[2];
     }
 
@@ -29,11 +29,11 @@ const parseEnglishString = (engString: string): string => {
 const engWordsArr = Object.keys(rootWordsObj).map((category) => {
   return {
     [category]: rootWordsObj[category].map((rootWordObj) => {
-      const wordsInQuotes = getWordsInQuotes(rootWordObj.english);
-
-      if (wordsInQuotes) {
-        return wordsInQuotes;
-      }
+      // const wordsInQuotes = getWordsInQuotes(rootWordObj.english);
+      //
+      // if (wordsInQuotes) {
+      //   return wordsInQuotes;
+      // }
 
       return parseEnglishString(rootWordObj.english);
     })
@@ -41,6 +41,7 @@ const engWordsArr = Object.keys(rootWordsObj).map((category) => {
 });
 
 // TODO: features
+// Parse , left off at Hedgehog
 // min roots for construction
 // max roots for construction
 

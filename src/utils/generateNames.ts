@@ -1,4 +1,5 @@
 import { FormattedWordStructures, GeneratedName, ParsedRootInterface } from "../interfaces/rootWordInterface";
+import removeExtraChars from "./removeExtraChars";
 
 const generateNames = (
   formattedWordStructures: FormattedWordStructures,
@@ -34,7 +35,7 @@ const generateNames = (
           const randomTranslationIndex = Math.floor(Math.random() * (translationList.length - 1));
           const translationObj = translationList[randomTranslationIndex];
 
-          nameKey += translationObj?.translation.replaceAll(/[$;,(?*-]/g, "") || "";
+          nameKey += translationObj?.translation ? removeExtraChars(translationObj.translation) : "";
           rootsArr.push(translationObj as ParsedRootInterface);
         }
       }

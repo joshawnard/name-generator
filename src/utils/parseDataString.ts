@@ -2,6 +2,7 @@ import {
   ParsedRootInterface
 } from "../interfaces/rootWordInterface";
 import getWordsInQuotes from "./getWordsInQuotes";
+import removeExtraChars from "./removeExtraChars";
 
 const parseDataString = (
   dataString: string | undefined,
@@ -41,7 +42,7 @@ const parseDataString = (
           }
         }
 
-        if (["Myc"].includes(splitString[0])) {
+        if (["Myc", "MycGr"].includes(splitString[0])) {
            languageAndWord = {
             ...defaultLanguageAndWord,
             language: "mycenaean",
@@ -49,6 +50,17 @@ const parseDataString = (
         }
 
         break;
+
+      case "armenian":
+        if (["OArm"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "classical armenian",
+          }
+        }
+
+        break;
+
 
       case "baltic":
         if (["OPrus", "OP"].includes(splitString[0])) {
@@ -96,7 +108,7 @@ const parseDataString = (
           }
         }
 
-        if (["MWel"].includes(splitString[0])) {
+        if (["MWel", "MW"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "middle welsh",
@@ -120,10 +132,17 @@ const parseDataString = (
           }
         }
 
+        if (["Scot"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "scottish english",
+          }
+        }
+
         break;
 
       case "gothic":
-        if (splitString[0] === "ON") {
+        if (["ON", "Nor"].includes(splitString[0])) {
           languageAndWord = {
             ...defaultLanguageAndWord,
             language: "old norse",
@@ -144,17 +163,31 @@ const parseDataString = (
           }
         }
 
+        if (["OldSaxon"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "old saxon",
+          }
+        }
+
+        if (["Yiddish"].includes(splitString[0])) {
+          languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "yiddish",
+          }
+        }
+
         break;
 
       case "hittite":
-        if (["Luwian", "HLuw"].includes(splitString[0])) {
+        if (["Luwian", "HLuw", "Luw", "HierLuv", "Luvian"].includes(splitString[0])) {
           languageAndWord = {
             ...defaultLanguageAndWord,
             language: "luwian",
           }
         }
 
-        if (["Hitt", "Hitt."].includes(splitString[0])) {
+        if (["Hitt", "Hitt.", "Hittite"].includes(splitString[0])) {
           languageAndWord = {
             ...defaultLanguageAndWord,
             language: "hittite",
@@ -171,6 +204,20 @@ const parseDataString = (
           }
         }
 
+        if (["Wakhi"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "Wakhi",
+          }
+        }
+
+        if (["Ossetic", "Oss"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "ossetian",
+          }
+        }
+
         if (splitString[0] === "Old") {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
@@ -183,6 +230,20 @@ const parseDataString = (
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "proto-iranian",
+          }
+        }
+
+        if (["NPers"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "dari, new persian",
+          }
+        }
+
+        if (["OPers"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "old persian",
           }
         }
 
@@ -205,8 +266,18 @@ const parseDataString = (
 
         break;
 
+      case "sanskrit":
+        if (["Ved"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "vedic",
+          }
+        }
+
+        break;
+
       case "slavic":
-        if (splitString[0] === "OCS") {
+        if (["OCS", "OSl"].includes(splitString[0])) {
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "old church slavonic",
@@ -220,6 +291,27 @@ const parseDataString = (
           }
         }
 
+        if (["Croatian"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "croatian",
+          }
+        }
+
+        if (["Bulg"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "bulgarian",
+          }
+        }
+
+        if (["Ukr"].includes(splitString[0])) {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "ukranian",
+          }
+        }
+
         break;
 
       case "tocharian":
@@ -227,6 +319,20 @@ const parseDataString = (
           languageAndWord = languageAndWord = {
             ...defaultLanguageAndWord,
             language: "tocharian A",
+          }
+        }
+
+        if (splitString[0] === "B") {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "tocharian B",
+          }
+        }
+
+        if (splitString[0] === "AB") {
+          languageAndWord = languageAndWord = {
+            ...defaultLanguageAndWord,
+            language: "tocharian A/B",
           }
         }
 
@@ -242,7 +348,11 @@ const parseDataString = (
         break;
     }
 
-    return languageAndWord;
+    return {
+      language: removeExtraChars(languageAndWord.language),
+      translation: removeExtraChars(languageAndWord.translation),
+      englishMeaning: languageAndWord.englishMeaning,
+    };
   }
 
   return undefined;

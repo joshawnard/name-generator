@@ -303,7 +303,7 @@ const rootWordsObj: ThisInterface = {
       "baltic": "Latvian gùovs \"cow\"",
       "celtic": "OIr bó (bóu/báu)[ak] \"cow\"; Boand [al] < Proto-Celtic *bowo-windā \"white cow (or) cow-finder\" [am] > Boyne[an][118] OW buch \"cow\" < *boukkā, bu-gail \"cowherd\" < *gʷou-kʷolyos",
       "english": "cow (< OE cū)",
-      "gothic": "Old Saxon kō, OHG chuo \"cow\"",
+      "gothic": "OldSaxon kō, OHG chuo \"cow\"",
       "hittite": "HierLuv wawa-, Lycian wawa-, uwa- \"cow\";[119] ?Pal kuwa(w)- \"bull\"[ao]",
       "iranian": "Av gāuš (gāuš)[i] \"cow\"; NPers gāv \"cow\"; Kurdish ga \"cow\"",
       "latin": "bōs (bovis) \"cattle\";[aj] Umbrian acc. bum \"cow\"",
@@ -377,7 +377,7 @@ const rootWordsObj: ThisInterface = {
       "tocharian": ""
     },
     {
-      "albanian": "possibly qen (disputed, possible Latin loan)",
+      "albanian": "qen (disputed, possible Latin loan)",
       "ancient greek": "kúōn (kunós) \"dog\"; Myc ku-na-ke-ta-i, Att/Ion kunegétes \"huntsman\" (litt. \"those who guide dogs\")[129]",
       "armenian": "šun \"dog\"",
       "baltic": "OPrus sunnis \"dog\", Lith šuo, šunis (acc pl.) \"dog\", Latv suns \"dog\", Ltg suņs \"dog\"",
@@ -498,9 +498,9 @@ const rootWordsObj: ThisInterface = {
       "gothic": "OHG gans \"goose\"",
       "hittite": "",
       "iranian": "Av zāō \"goose\" (? not in Pokorny); Sogdian z’γ \"kind of bird\" , NPers ɣaz \"goose\"",
-      "latin": "(h)ānser \"goose\"",
+      "latin": "ānser \"goose\"",
       "pie": "*ĝʰans- \"goose\"",
-      "sanskrit": "haṁsá-\"goose\"",
+      "sanskrit": "haṁsá -\"goose\"",
       "slavic": "Bulg gɤ̞ska \"goose\", OCS gǫsǐ \"goose\"",
       "tocharian": "B kents- \"bird (goose?)\"[137][138]"
     },
@@ -538,7 +538,7 @@ const rootWordsObj: ThisInterface = {
     },
     {
       "albanian": "esh, eshk \"porcupine, hedgehog\"",
-      "ancient greek": "MycGr e-ki-no;[143] ekhînos \"hedgehog\"",
+      "ancient greek": "MycGr e-ki-no; ekhînos \"hedgehog\"",
       "armenian": "ozni \"hedgehog\"",
       "baltic": "Lith ežȳs \"hedgehog\"[ap]",
       "celtic": "",
@@ -1412,7 +1412,7 @@ const rootWordsObj: ThisInterface = {
       "armenian": "",
       "baltic": "Lith úostas \"mouth of a river, harbor\"",
       "celtic": "OIr á \"mouth\"",
-      "english": "Scot ure (< OE ōr, ōra)",
+      "english": "mouth Scot ure (< OE ōr, ōra)",
       "gothic": "Nor óss \"river mouth\"",
       "hittite": "aiš, gen. iššāš \"mouth\"",
       "iranian": "Av āh \"mouth\"",
