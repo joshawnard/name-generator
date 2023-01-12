@@ -15,19 +15,12 @@ import parseEnglishString from "../utils/parseEnglishString";
 const engWordsArr = Object.keys(rootWordsObj).map((category) => {
   return {
     [category]: rootWordsObj[category].map((rootWordObj) => {
-      // const wordsInQuotes = getWordsInQuotes(rootWordObj.english);
-      //
-      // if (wordsInQuotes) {
-      //   return wordsInQuotes;
-      // }
-
       return parseEnglishString(rootWordObj.english);
     })
   }
 });
 
 // TODO: features
-// Parse , left off at Bodily functions and states
 // min roots for construction
 // max roots for construction
 

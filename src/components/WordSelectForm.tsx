@@ -4,6 +4,7 @@ import rootWordsObj from "../root_words/rootWords";
 
 const WordSelectForm = (): JSX.Element => {
   const { engWords, selectedWords, setSelectedWords } = useContext(NameGeneratorContext);
+  const flattenedSelectedWordList = Object.values(selectedWords).flat();
 
   const handleCheck = (e: ChangeEvent<HTMLInputElement>, type: string, word: string) => {
     const { currentTarget: { checked } } = e;
@@ -57,6 +58,7 @@ const WordSelectForm = (): JSX.Element => {
                           <div key={`word-${index}`}>
                             <label>
                               <input
+                                checked={flattenedSelectedWordList.includes(word)}
                                 name={word}
                                 onChange={(e) => handleCheck(e, category, word)}
                                 type="checkbox"
