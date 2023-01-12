@@ -4377,22 +4377,6 @@ const rootWordsObj: ThisInterface = {
       "tocharian": "ñuk \"I\""
     },
     {
-      "albanian": "mua, mue \"me (acc.)\" < *H₁mē-m",
-      "ancient greek": "emé, me \"me (acc.)\"",
-      "armenian": "is \"me (acc.)\" <? *H₁me-ge",
-      "baltic": "Lith manè \"me (acc.)\"",
-      "celtic": "OIr me-sse, mé, W mi \"I\"",
-      "english": "me (< OE mē, mec < *H₁me-ge)",
-      "gothic": "mik \"me (acc.)\"",
-      "hittite": "ammuk \"me (acc., dat.)\" < *H₁me-ge, -mu \"me (acc. encl.)\"",
-      "iranian": "Av mąm \"me\" Kurdish mi \"me\"",
-      "latin": "mē(d) \"me (acc.)\"",
-      "pie": "*H₁me- \"me (acc.)\"",
-      "sanskrit": "mām \"me (acc.)\" < *H₁mē-m, mā \"me (acc. encl.)\"",
-      "slavic": "OCS mę \"me (acc.)\" < *H₁mē-m",
-      "tocharian": ""
-    },
-    {
       "albanian": "meje",
       "ancient greek": "moi \"me (dat., gen. encl.)\"",
       "armenian": "inj \"me (dat.)\"",
